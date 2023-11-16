@@ -1,0 +1,46 @@
+<!-- 1.5 Using map to Create Lists (ULs, Tables, etc.)-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navne</title>
+  </head>
+  <body>
+    <script>
+      //function til at klikke på knappen
+    </script>
+
+    <!-- Så det vi gør her, er at vi dynamisk tilfører en liste til vores div gennem scripting-->
+    <div id="1"></div>
+    <input id="inputName" type="text" onchange="onClickFn(this.value)" />
+    <input id="nameBtn" type="button" value="Button" />
+
+    <script>
+      const hasRunIntro = localStorage.getItem("hasRunIntro");
+      
+      if (hasRunIntro === null || hasRunIntro !== "1") {
+        // Run the intro...
+        //Har vores names
+        var names = ["Lars", "Peter", "Jan", "Bo"];
+
+        //Laver en html unordered list med navnene
+        let list = "<ul>" + names.map((item) => `<li>${item}</li>`).join("") + "</ul>";
+
+        //Finder vores div på id 1 og sætter den til at være vores list
+        let div = document.getElementById("1");
+
+        //Sætter vores div til at være vores list
+        div.innerHTML = list;
+        isFirstRun = true;
+        localStorage.setItem("hasRunIntro", "1");
+      }
+
+      function onClickFn(_input) {
+        console.log(_input);
+        names.push(_input);
+      }
+    </script>
+  </body>
+</html>
